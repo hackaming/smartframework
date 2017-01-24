@@ -22,5 +22,4 @@ public class CollectionUtil {
 	public static boolean isNotEmpty(Map<?,?> map){
 		return MapUtils.isNotEmpty(map);
 	}
-
 }
