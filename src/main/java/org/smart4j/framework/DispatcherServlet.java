@@ -25,11 +25,13 @@ import org.smart4j.framework.helper.BeanHelper;
 import org.smart4j.framework.helper.ConfigHelper;
 import org.smart4j.framework.helper.ControllerHelper;
 import org.smart4j.framework.util.ArrayUtil;
+import org.smart4j.framework.util.CodecUtil;
+import org.smart4j.framework.util.JsonUtil;
 import org.smart4j.framework.util.ReflectionUtil;
+import org.smart4j.framework.util.StreamUtil;
 import org.smart4j.framework.util.StringUtil;
 @WebServlet(urlPatterns = "/*",loadOnStartup = 0)
 public class DispatcherServlet extends HttpServlet{
-
 	@Override
 	public void init(ServletConfig servletConfig) throws ServletException {
 		HelperLoader.init();
@@ -55,7 +57,7 @@ public class DispatcherServlet extends HttpServlet{
 				String paramValue = req.getParameter(paraName);
 				paramMap.put(paraName,paramValue);
 			}
-			String body = CodeUtil.decodeURL(StreamUtil.getString(req.getInputStream()));
+			String body = CodecUtil.decodeURL(StreamUtil.getString(req.getInputStream()));
 			if (StringUtil.isNotEmpty(body)){
 				String[] params = StringUtils.split(body,"&"); //need add the split into our own StringUtil package, here we use the apache commons package
 				if (ArrayUtil.isNotEmpty(params)){
