@@ -12,6 +12,17 @@ public class CastUtil {
 	public static String castString(Object obj,String defaultValue){
 		return obj==null?String.valueOf(obj):defaultValue;
 	}
+	public static long castLong(Object obj){
+		return castLong(obj,0L);
+	}
+	public static long castLong(Object obj,long defaultValue){
+		long value = defaultValue;
+		if (null != obj){
+			String strValue = castString(obj);
+			value = Long.parseLong(strValue);
+		}
+		return value;
+	}
 	public static int castInt(Object obj){
 		return castInt(obj,0);
 	}
